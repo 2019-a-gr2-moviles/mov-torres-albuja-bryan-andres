@@ -8,24 +8,30 @@ import javax.swing.*
 import javax.swing.table.DefaultTableModel
 
 fun mostrarOpcionesEditorial() {
-    var indice = -1
-    var opcionesMenu = -1
-    do {
-        opcionesMenu = opcionesTablaEditorial()
+    try {
+        var indice = -1
+        var opcionesMenu = -1
+        do {
+            opcionesMenu = opcionesTablaEditorial()
 
-        when(opcionesMenu) {
-            1 -> listarEditoriales()
-            2 -> crearEditorial()
-            3 -> {
-                indice = listarEditoriales()
-                editarEditorial(indice)
+            when(opcionesMenu) {
+                1 -> listarEditoriales()
+                2 -> crearEditorial()
+                3 -> {
+                    indice = listarEditoriales()
+                    editarEditorial(indice)
+                }
+                4 -> {
+                    indice = listarEditoriales()
+                    eliminarEditorial(indice)
+                }
             }
-            4 -> {
-                indice = listarEditoriales()
-                eliminarEditorial(indice)
-            }
-        }
-    } while(opcionesMenu != 4)
+        } while(opcionesMenu != 4)
+    }
+
+    catch (e: IllegalStateException) {
+        print("No existen datos almacenados")
+    }
 }
 
 fun opcionesTablaEditorial(): Int {

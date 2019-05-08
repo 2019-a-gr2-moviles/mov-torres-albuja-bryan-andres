@@ -11,12 +11,13 @@ val lectorArchivoComics = FileReader(archivoComics)
 val bufferReaderComics = BufferedReader(lectorArchivoComics)
 
 val arregloComics = ArrayList<Comic>()
+var lecturaDatosComics = ""
 
 fun listarComics():Int {
     val panel = JPanel()
     val modeloTabla = DefaultTableModel(arrayOf(arrayOf("Nombre", "Autor")), arrayOf("Names", "In", "Order"))
 
-    var lecturaDatosComics = bufferReaderComics.readLine()
+    lecturaDatosComics = bufferReaderComics.readLine()
 
     val comicsEnArchivo = lecturaDatosComics.split(';')
 
@@ -132,6 +133,12 @@ fun editarComic(indice: Int) {
 }
 
 fun eliminarComic(indice: Int) {
+    val panel = JPanel()
+    val mensajeConfirmacion = JLabel("¿Desea eliminar el elemento seleccioando?")
+
+    panel.add(mensajeConfirmacion)
+    JOptionPane.showConfirmDialog(null, panel, "Eliminar comic", JOptionPane.YES_NO_CANCEL_OPTION)
+
     var comicAEliminar: Comic = arregloComics[indice]
     arregloComics.remove(comicAEliminar)
 

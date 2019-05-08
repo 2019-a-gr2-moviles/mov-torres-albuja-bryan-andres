@@ -8,24 +8,31 @@ import javax.swing.ListSelectionModel
 import javax.swing.table.DefaultTableModel
 
 fun mostrarOpcionesComic() {
-    var indice = -1
-    var opcionesMenu = -1
-    do {
-        opcionesMenu = opcionesTablaComic()
+    try {
+        var indice = -1
+        var opcionesMenu = -1
+        do {
+            opcionesMenu = opcionesTablaComic()
 
-        when(opcionesMenu) {
-            1 -> listarComics()
-            2 -> crearComic()
-            3 -> {
-                indice = listarComics()
-                editarComic(indice)
+            when(opcionesMenu) {
+                1 -> listarComics()
+                2 -> crearComic()
+                3 -> {
+                    indice = listarComics()
+                    editarComic(indice)
+                }
+                4 -> {
+                    indice = listarComics()
+                    eliminarComic(indice)
+                }
             }
-            4 -> {
-                indice = listarComics()
-                eliminarComic(indice)
-            }
-        }
-    } while(opcionesMenu != 4)
+        } while(opcionesMenu != 4)
+    }
+
+    catch (e: IllegalStateException) {
+        print("No existen datos almacenados")
+    }
+
 }
 
 fun opcionesTablaComic(): Int {
