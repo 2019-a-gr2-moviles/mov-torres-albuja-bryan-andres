@@ -140,4 +140,8 @@ fun paraImpar(nota: Int) {
          nota + 1
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 656f811b7d18183560f8b8cb4cff2c39384392b4
