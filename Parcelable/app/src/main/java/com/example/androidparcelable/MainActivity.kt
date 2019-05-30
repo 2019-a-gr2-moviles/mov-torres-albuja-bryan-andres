@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        btn_adapter.setOnClickListener{
+            irAListView()
+        }
+
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
@@ -51,6 +55,15 @@ class MainActivity : AppCompatActivity() {
 
         intentExplicito.putExtra("usuario", andres)
         intentExplicito.putExtra("mascota", buck)
+
+        startActivity(intentExplicito)
+    }
+
+    fun irAListView() {
+        val intentExplicito = Intent(
+            this,
+            ListViewActivity::class.java
+        )
 
         startActivity(intentExplicito)
     }
